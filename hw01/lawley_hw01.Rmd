@@ -1,0 +1,234 @@
+---
+title: "Homework 01: Getting our Feet Wet"
+subtitle: "CS 662 Natural Language Processing"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(tidyverse)
+```
+
+
+# Part 1: Reading some data
+
+### 1. Your program
+
+`01a_download-files.py`   
+`01b_decompress-serialize.py`
+
+### 2. Sample terminal output, showing perhaps the first 100 lines of its output.
+
+`Mainland Chinese Foreign Minister Qian Qichen
+was highly skeptical of Tokyo's explanations of the content of the
+newly published US-Japan guidelines for defense cooperation when he
+met Monday in Beijing with representatives of Japan's press. Qian also said the time is not ripe yet for a trilateral official
+dialogue among Washington, Beijing and Tokyo on defense, adding that
+"scholarly discussion" would be appropriate at the present. Qian's remarks indicate that despite explanations of the new
+guidelines by Japanese Prime Minister Ryutaro Hashimoto and Foreign
+Minister Keizo Obuchi, Beijing is still very worried about whether
+Taiwan falls within the sphere of the bilateral defense agreement. According to reports in the Japanese media, among Qian's concerns
+are: -- If the defense pact is a matter between Washington and Tokyo,
+it should be unnecessary to renew it, hence putting its content into
+doubt. -- Although the new guidelines do not specifically mention
+geographic criteria, there is still speculation that they cover
+Taiwan. -- Some have argued for raising the transparency of the bilateral
+agreement, while others advocate keeping it ambiguous and opaque. The American Chamber of Commerce (AmCham) in
+Taipei on Wednesday appealed for an early conclusion of trade
+consultations between the United States and the Republic of China on
+terms for Taiwan to join the World Trade Organization (WTO). AmCham President Jeffrey R. Williams told a news conference that
+all AmCham members hope bilateral ROC-US WTO talks will be concluded
+as soon as possible to facilitate Taiwan's entry to the Geneva-based
+world trade regulatory body. According to Williams, most American business people with
+interests in Taiwan are convinced that they will benefit from
+Taiwan's WTO accession because Taiwan would be required to further
+open its market and better protect intellectual property rights. Williams, who just returned from a "doorknocking" visit to
+Washington, D.C. at the head of a 12-member AmCham delegation, said
+the US executive branch agreed with AmCham that Taiwan's WTO
+accession should not be linked to mainland China's membership
+application. "We agree that Taiwan's WTO entry should be considered completely
+on the basis of its own economic conditions," Williams said, adding
+that Taiwan is likely to conclude WTO-related trade consultations
+with the United States before the end of bilateral WTO talks between
+Washington and Beijing. During its stay in the United States, the AmCham delegation met
+with many Clinton administration officials and Congress members to
+exchange views on ways to help American corporations upgrade their
+overseas competitiveness. Williams said the AmCham mission had urged various US federal
+agencies to allow their senior officials to make frequent visits to
+Taiwan to help boost bilateral trade and economic cooperation for
+mutual benefits. Even though the Clinton administration was busy preparing for
+mainland Chinese President Jiang Zemin's planned visit to the United
+States late this month, Williams said, many federal government
+officials still showed keen interest in listening to AmCham's
+suggestions and opinions about reinforcing Taipei-Washington trade
+and economic ties. As to the AmCham 1997-98 Taiwan White Paper, which he formally
+unveiled at a news conference held in Washington, D.C. last Thursday,
+Williams said the annual report mainly analyzed Taiwan's current
+economic and investment climate as a reference for American companies
+intending to invest in Taiwan, adding that the White Paper was not
+aimed at criticizing any party. The White Paper said Taiwan's restrictions on trade and
+investment across the Taiwan Strait have not only hindered the
+development of its own industries but have also discouraged
+multinational business groups from setting up a foothold on the
+island. It further claimed that the ROC government's master plan to
+develop Taiwan into an Asia-Pacific operations center would remain a
+pipe dream if Taiwan companies are not allowed to enter the vast
+mainland market directly and obtain access to its resources. Williams said AmCham's analysis was made purely from a commercial
+viewpoint, adding that AmCham members believe Taiwan must establish
+direct communications and transport links with mainland China so that
+Taiwan-based companies can make successful inroads into the world's
+largest market. Evergreen's green-colored ships and green
+matchbox-like containers are the hope of the port of Gioia Tauro in
+southern Italy. Taiwan-based Evergreen Marine Corp., which operates one of the
+largest container fleets in the world, is wagering on Gioia Tauro, a
+newly-developed and non-urban port area, attempting to build it into
+the third largest container port in the world. Evergreen is also targeting Gioia Tauro as a gateway to all
+Mediterranean-rim states and the Black Sea to the north, said a
+company spokesman. The Italian government has put up nearly US$180 million since
+1975 to develop the quiet backwater fishing port into a commercial
+harbor. With most parts of the development already finished, the
+harbor accommodated some 1,270 ships in the first six months of this
+year. The harbor bureau there estimated that its transshipment
+capacity may reach 1.4 million TEUs this year. Although the port is fully operational, its peripheral facilities
+are still in dire need of help, Aldo Alessio, mayor of Gioia Tauro,
+lamented. He noted that many support works have been left unfinished
+due to budget constraints, with highways in the vicinity only four
+meters wide and the nearby hinterland remaining undeveloped and
+blanketed by weeds. Taipei's representative office in Rome, which has generally been
+reluctant to beckon Taiwan investors to Italy for fear that the
+European country's labor union clout and chronically inefficient
+bureaucracy may hinder their development, has championed Evergreen's
+container port project in Gioia Tauro. Joe Hung, Taipei representative in Italy, said Evergreen made the
+right decision by choosing Gioia Tauro. As long as there is no major
+strike problem, chances for the project's success are great, he said,
+noting that the port of Gioia Tauro is strategically positioned and
+has the full support of the Italian government. While Evergreen's arrival in Gioia Tauro brings hope to people in
+southern Italy, the move also stimulates Taiwan investors to look
+toward Italy, enabling them to have other choices beyond mainland
+China, Southeast Asia and Latin America, Hung said. Taiwan should be treated the same as all 17
+other members in meetings of the Asia-Pacific Economic Cooperation
+(APEC) forum even if the gatherings are held in Beijing, Taipei's
+arch rival, said P.K. Chiang, chairman of the Council for Economic
+Planning and Development (CEPD), on Wednesday. Chiang made the remarks in an interpellation session before the
+Legislative Yuan's Economic Affairs Committee, during which
+Legislator Yen Chin-fu of the opposition Democratic Progressive Party
+asked him what Taiwan would do if Beijing sponsors the 2001 APEC
+meeting and demands that Taiwan take part in the gathering as a local
+economic entity of the People's Republic of China. Chiang said it is still too early to speculate on who will host
+the 2001 APEC meeting. Taiwan, a full APEC member, has taken part in all eight APEC
+ministerial-level meetings in the past as a sovereign economic entity
+with a status equal to that of every other APEC member, Chiang said.
+"Things didn't change in the past and they won't change in the`
+
+### 3. A sentence or two describing your approach and any bugs you encountered
+
+I ended up downloading the files in a python script with `BeautifulSoup` from `bs4` and `wget`. I decompressed and serialized the files in a separate script using `gzip` and `etree` from `lxml`. I've only parsed an .xml file once or twice beforehand so there was a lot of trial and error before I figured out something that worked the way I wanted it to. I kept the file contents in a nested list and then flattened the list of extracted text to output a single string.
+
+# Part 2: Structuring the data
+
+### 1. How many sentences are there in the CNA-GW corpus?
+
+579,780
+
+# Part 3: Counting and Comparing
+
+### 1. How many unique types are present in this corpus?
+
+n types: 143,465
+
+### 2. How about unigram tokens?
+
+n tokens: 16,674,709
+
+### 3. Produce a rank-frequency plot (similar to those seen on the Wikipedia page for Zipf's Law) for this corpus
+
+```{r echo = FALSE}
+include_graphics("rank_freq_plot.png")
+```
+
+### 4. What are the twenty *most common* words?
+
+THE, TO, OF, AND, IN, A, THAT, TAIWAN, 'S, SAID, FOR, ON, WILL, WITH, IS, AT, AS, BY, HE, BE
+
+### 5. You may notice that the most common are words that occur very frequently in the English langauge (stopwords). What happens to your type/token counts if you remove stopwords using `nltk.corpora`'s `stopwords` list?
+
+n tokens: 10,293,408   
+n types: 143,327
+
+### 6. After removing stopwords, what are the 20 most common words?
+
+TAIWAN, 'S, SAID, CHINA, PERCENT, GOVERNMENT, ALSO, CHEN, PRESIDENT, YEAR, TAIPEI, NT, TWO, MAINLAND, PEOPLE, US, NEW, CHINESE, ACCORDING, PARTY
+
+
+### 7. Recalling Emily Bender's sage advice - "Look at your data!" - examine the 30 highest-PMI word pairs, along with their unigram and bigram frequencies. What do you notice?
+
+The top 30 bigrams all appear to have the same PMI value as well as the same p(w1,w2), p(w1), and p(w2) values. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+pmi_0 <- read_csv("pt3_0.csv")
+pmi_0 %>% kable()
+```
+
+### 8. Experiment with a few different threshold values, and report on what you observe
+
+I calculated PMI with threshold values of 20, 60, 100, and 200. I included the top 10 highest-PMI word pairs and their unigram and bigram frequencies below. As I raised the threshold value the top 10 highest-PMI values decreased, with a PMI of about 15.5 for a threshold of 10 and a PMI of about 13 for a threshold of 200. Some categories of word pairs that showed up in the top 10 things such as countries/cities (e.g. Kuala Lumpur, Saudi Arabia, Las Vegas, Abu Dhabi), Latin phrases (e.g. ad hoc, bona fide, alma mater), companies (e.g. Evertrust Rehouse, AU Optronics), and politicians (e.g. Eric Liluan, Qian Qichen). As I increased the threshold value I started to recognize more of the word pairs. At a threshold of 10 one of the top word pairs was ("JENN", "LANN"). After googling, I learned that it is probably referring to the Dajia Jenn Lann Temple in Taiwan (it's appearance makes sense since this data is from a Taiwanese newspaper). At a threshold of 60 and 100, one of the top word pairs was ("BOVINE", "SPONGIFORM"), a.k.a mad cow disease. Interestingly, ("MAD", "COW") appears in the top word pairs when the threshold is set to 200.
+
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+pmi_20 <- read_csv("pt3_20.csv")
+pmi_60 <- read_csv("pt3_60.csv")
+pmi_100 <- read_csv("pt3_100.csv")
+pmi_200 <- read_csv("pt3_200.csv")
+```
+
+**Threshold of 10:**
+```{r echo = FALSE}
+pmi_20 %>% 
+  head(n = 10) %>% 
+  kable()
+```
+
+**Threshold of 60:**
+```{r echo = FALSE}
+pmi_60 %>% 
+  head(n = 10) %>% 
+  kable()
+```
+
+**Threshold of 100:**
+```{r echo = FALSE}
+pmi_100 %>% 
+  head(n = 10) %>% 
+  kable()
+```
+
+**Threshold of 200:**
+```{r echo = FALSE}
+pmi_200 %>% 
+  head(n = 10) %>% 
+  kable()
+```
+
+### 9. With a threshold of 100, what are the 10 highest-PMI word pairs?
+
+**Threshold of 100:**
+```{r echo = FALSE}
+pmi_100 %>% 
+  head(n = 10) %>% 
+  kable()
+```
+
+
+### 10. Examine the PMI for "New York". Explain in your own words why it is not higher.
+
+The probability of unigram "NEW" (about 0.002) is higher than the probability of both the unigram "YORK" (about 0.0001) and the bigram "NEW YORK" (about 0.0009). Since this data is from a newspaper and newspapers typically report on current events, it would make sense that the adjective "new" is used very frequently. Much more frequently than the proper noun "New York".
+
+```{r echo = FALSE}
+ny <- data.frame(8.293065697016244, 0.0008753704887545766,
+                   0.001874155644935093, 0.00011688359898814427)
+
+colnames(ny) <- c("pmi(NEW, YORK)", "p(NEW, YORK)", "p(NEW)", "p(YORK)")
+
+ny %>% 
+  kable()
+```
